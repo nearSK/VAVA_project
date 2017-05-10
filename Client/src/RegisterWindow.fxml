@@ -1,34 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane opacity="0.9" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
+<BorderPane opacity="0.9" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
    <center>
-      <VBox alignment="CENTER" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox spacing="2.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Register">
+            <HBox alignment="TOP_CENTER">
+               <children>
+                  <Label text="Register">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <TextField fx:id="userText" promptText="Userrname" />
+            <Label fx:id="lblUser" style="-fx-padding: 0,0,0,0;" textFill="RED">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="userText" promptText="Userrname" />
             <TextField fx:id="emailText" promptText="Email address" />
+            <Label fx:id="lblEmail" textFill="RED">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
             <PasswordField fx:id="pswdText" promptText="Password" />
+            <Label fx:id="lblPswd" textFill="RED">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
             <PasswordField fx:id="pswd2Text" promptText="Retype password" />
-            <Button mnemonicParsing="false" onAction="#register" text="Register" />
+            <Label fx:id="lblPswd2" textFill="RED">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER">
+               <children>
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#register" prefHeight="25.0" prefWidth="200.0" stylesheets="@stylesheet.css" text="Register">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
          </children>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
          <padding>
-            <Insets left="50.0" right="50.0" />
+            <Insets left="50.0" right="50.0" top="20.0" />
          </padding>
       </VBox>
    </center>

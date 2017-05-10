@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -12,17 +13,62 @@
 
 <BorderPane fx:id="rootPane" opacity="0.9" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <center>
-      <VBox alignment="CENTER" prefHeight="300.0" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER_LEFT" prefHeight="300.0" prefWidth="300.0" spacing="2.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Log In">
+            <VBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Log In">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#loadSecond" styleClass="link" stylesheets="@stylesheet.css" text="New user? Register here" textAlignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </VBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label fx:id="lblWrong" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <TextField fx:id="userText" promptText="Userrname">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></TextField>
+            <Label fx:id="lblUser" style="-fx-padding: 0,0,0,0;" textFill="RED">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#loadSecond" text="New user? Register here" textAlignment="CENTER" />
-            <TextField fx:id="userText" promptText="Userrname" />
             <PasswordField fx:id="pswdText" promptText="Password" />
-            <Button mnemonicParsing="false" onAction="#login" text="Log In" />
+            <Label fx:id="lblPswd" style="-fx-padding: 0,0,0,0;" textFill="RED">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER">
+               <children>
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#login" prefWidth="200.0" stylesheets="@stylesheet.css" text="Log In">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
          </children>
          <BorderPane.margin>
             <Insets />
@@ -33,9 +79,12 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="BOTTOM_CENTER" BorderPane.alignment="CENTER">
+      <HBox alignment="BOTTOM_CENTER" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Forgot Your Password?" />
+            <Button mnemonicParsing="false" onAction="#loadThird" styleClass="link" stylesheets="@stylesheet.css" text="Forgot Your Password?">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
          <BorderPane.margin>
             <Insets />
