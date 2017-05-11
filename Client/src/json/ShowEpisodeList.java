@@ -8,10 +8,17 @@ import java.net.URL;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import model.Episode;
-
+/**
+ * Vyhladavanie epizod konkretneho serialu
+ * zdroj: www.tvmaze.com/api
+ * @author Peter Ocelik
+ *
+ */
 public class ShowEpisodeList {
 	
-	public ShowEpisodeList(Integer id) {
+	public ShowEpisodeList() {}
+	
+	public Episode[] showEpisodeList(Integer id) {
 		
 		String url = "http://api.tvmaze.com/shows/";
 		String url1 = "/episodes";
@@ -21,12 +28,11 @@ public class ShowEpisodeList {
 			InputStream is = new URL(url).openStream();
 			ObjectMapper mapper = new ObjectMapper();
 			Episode[] episodes = mapper.readValue(is, Episode[].class);
-			//Map<String,Object> map = mapper.readValue(is, Map.class);
 			mapper.writeValue(new File("episidelist.json"), episodes);
-			
+			return episodes;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		} 
 	}
 

@@ -8,7 +8,12 @@ import java.net.URL;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import model.Season;
-
+/**
+ * Vyhladavanie serii konkretneho serialu
+ * zdroj: www.tvmaze.com/api
+ * @author Peter Ocelik
+ *
+ */
 public class ShowSeasons {
 	
 	public ShowSeasons(Integer id) {

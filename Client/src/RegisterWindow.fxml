@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane opacity="0.9" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" opacity="0.9" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
    <center>
-      <VBox spacing="2.0" BorderPane.alignment="CENTER">
+      <VBox opacity="0.9" prefHeight="300.0" prefWidth="300.0" spacing="2.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="TOP_CENTER">
                <children>

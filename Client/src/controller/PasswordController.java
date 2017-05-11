@@ -8,11 +8,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-
+import javafx.scene.control.TextField;
+/**
+ *Kontrola ci je emailova adresa pouzivatela v databaze
+ * @author Peter Ocelik
+ *
+ */
 public class PasswordController implements Initializable {
 	
 	@FXML
-	private TextArea emailText;
+	private TextField emailText;
 	@FXML
 	private Label lblEmail;
 
@@ -20,11 +25,14 @@ public class PasswordController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 	}
-	
+	/**
+	 * Skontroluje ci je emailva adresa
+	 * v spravnom tvare
+	 * @param event
+	 */
 	@FXML
 	public void sendPassword(ActionEvent event) {
 		String email = emailText.getText();
-		System.out.println(email);
 		
 		lblEmail.setText(null);
 		

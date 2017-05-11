@@ -8,12 +8,18 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * Graficke rohranie prihlasovania
+ * @author Peter Ocelik
+ *
+ */
 public class LoginView {
 	
 	public Stage window;
 	
-	public LoginView() {
+	public LoginView() {}
+	
+	public void showView() {
 		
 		window = new Stage();
 		
@@ -27,11 +33,11 @@ public class LoginView {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//window.initStyle(StageStyle.UNDECORATED);
-		//window.initStyle(StageStyle.TRANSPARENT);
 		
 		window.initStyle(StageStyle.UTILITY);
 		window.showAndWait();
 	}
+	
+	
 
 }
