@@ -48,8 +48,6 @@ public class UserBean implements UserBeanRemote  {
 		}
 		User u = new User(usr, pswd, email);
 		manager.persist(u);
-		//manager.close();
 		return true;
-		
 	}
 }

@@ -1,18 +1,14 @@
 package session;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
+import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-import org.codehaus.jackson.map.ObjectMapper;
-
-import model.Episode;
-import model.Search;
-import model.Season;
+import entity.Usershow;
 
 /**
  * Session Bean implementation class ShowBean
@@ -20,71 +16,30 @@ import model.Season;
 @Stateless
 @LocalBean
 public class ShowBean implements ShowBeanRemote {
+	
+	@PersistenceContext
+	private EntityManager manager;
 
 	@Override
-	public Search[] searchShows(String query) {
-		
-		String url = "http://api.tvmaze.com/search/shows?q=";
-		url += query;
-		
-		try {
-			InputStream is = new URL(url).openStream();
-			ObjectMapper mapper = new ObjectMapper();
-			Search[] searchs = mapper.readValue(is, Search[].class);
-			//Map<String,Object> map = mapper.readValue(is, Map.class);
-			mapper.writeValue(new File("search.json"), searchs);
-			return searchs;
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		} 
+	public boolean insertShow(Integer user_id, Integer show_id) {
+		Query query = manager.createQuery("SELECT u FROM Usershow u WHERE u.user_id=:arg1 AND u.show_id=:arg2");
+		query.setParameter("arg1", user_id);
+		query.setParameter("arg2", show_id);
+		List<Usershow> results = query.getResultList();
+		if(!results.isEmpty()) {
+			return false;
+		}
+		Usershow u = new Usershow(user_id, show_id);
+		manager.persist(u);
+		return true;
 	}
-	
+
 	@Override
-	public Episode[] showEpisodeList(Integer id) {
-		
-		String url = "http://api.tvmaze.com/shows/";
-		String url1 = "/episodes";
-		url = url+ id + url1;
-		
-		try {
-			InputStream is = new URL(url).openStream();
-			ObjectMapper mapper = new ObjectMapper();
-			Episode[] episodes = mapper.readValue(is, Episode[].class);
-			//Map<String,Object> map = mapper.readValue(is, Map.class);
-			mapper.writeValue(new File("episidelist.json"), episodes);
-			return episodes;
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		} 
-	}
-	
-	@Override
-	public Season[] showSeasons(Integer id) {
-		
-		String url = "http://api.tvmaze.com/shows/";
-		String url1 = "/seasons";
-		url = url+ id + url1;
-		
-		try {
-			InputStream is = new URL(url).openStream();
-			ObjectMapper mapper = new ObjectMapper();
-			Season[] seasons = mapper.readValue(is, Season[].class);
-			//Map<String,Object> map = mapper.readValue(is, Map.class);
-			mapper.writeValue(new File("seasons.json"), seasons);
-			return seasons;
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		} 
-		
+	public List<Usershow> getShows(Integer user_id) {
+		Query query = manager.createQuery("SELECT u FROM Usershow u WHERE u.user_id=:arg1");
+		query.setParameter("arg1", user_id);
+		List<Usershow> u = query.getResultList();
+		return u;
 	}
 
 }

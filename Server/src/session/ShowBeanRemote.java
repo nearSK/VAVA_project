@@ -1,7 +1,10 @@
 package session;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 
+import entity.Usershow;
 import model.Episode;
 import model.Search;
 import model.Season;
@@ -9,10 +12,8 @@ import model.Season;
 @Remote
 public interface ShowBeanRemote {
 	
-	public Search[] searchShows(String query);
+	public boolean insertShow(Integer user_id, Integer show_id);
 
-	public Episode[] showEpisodeList(Integer id);
-
-	public Season[] showSeasons(Integer id);
+	public List<Usershow> getShows(Integer user_id);
 
 }

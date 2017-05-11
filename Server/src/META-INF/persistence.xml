@@ -10,6 +10,7 @@
 	<jta-data-source>java:/PostgresDS</jta-data-source>
 	
 	<class>entity.User</class>
+	<class>entity.Usershow</class>
 	
 		<properties>
  		<!-- <property name="hibernate.hbm2ddl.auto" value="update"/>  -->       
